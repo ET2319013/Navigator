@@ -5,3 +5,5 @@
 /.vs/Routes
 /bin/Debug/net6.0-windows
 /obj
+/.vs/ProjectEvaluation
+/Routes.csproj.user

@@ -22,10 +22,13 @@ namespace Routes
 			"Kazanlyk",			//10
 			"Stara Zagora" };   //11
 
-		Route[,] x;
+		readonly Route[,] x;
 		public Navigator() 
 		{
 			x = new Route[Cities.Length, Cities.Length];
+			x[0, 1] = new Route("A5", 103, 100); //Varna-Burgas
+			x[1, 0] = new Route("A5", 103, 100); //Burgas-Varna
+
 		}
 
 		public double Calc(int from, int to)
@@ -44,17 +47,37 @@ namespace Routes
 			_name = name; 
 			_distance = distance;	
 			_speed = speed;
-			_time = distance / speed;
+		
 		}
 	
-		private readonly string _name = string.Empty;
-		private readonly double _distance = 0;
-		private readonly double _speed = 0;
-		private readonly double _time = 0; //must be != 0
+		private string _name = string.Empty;
+		private double _distance = 0;
+		private double _speed = 0;
 
-		public string Name { get { return _name; } }
-		public double Distance { get { return _distance; } }	
-		public double Speed { get { return _speed; } }
-		public double Time { get { return _time; } }
+		public string Name { 
+			get { return _name; }
+			set { _name = value; }
+		}
+		public double Distance { 
+			get { return _distance; } 
+			set { _distance = value; }
+		}	
+		public double Speed { 
+			get { return _speed; } 
+			set { _speed = value; }
+		}
+		public double Time { 
+			get
+			{
+				if (_distance > 0 && _speed > 0)
+				{
+					return _distance / _speed;
+				}
+				else
+				{
+					return 0;
+				}
+			} 
+		}
 	}
 }
