@@ -31,7 +31,8 @@ namespace Routes
 			}
 			else
 			{
-				Navigator.Calc(comboBox1.SelectedIndex, comboBox2.SelectedIndex);
+				//вот тут надо в label4.Text вывести результат
+				label4.Text = Navigator.Dijkstra(comboBox1.SelectedIndex, comboBox2.SelectedIndex);
 			}
 		}
 	}

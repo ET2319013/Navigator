@@ -34,6 +34,7 @@
 			comboBox2 = new ComboBox();
 			button1 = new Button();
 			label3 = new Label();
+			label4 = new Label();
 			SuspendLayout();
 			// 
 			// label1
@@ -89,11 +90,21 @@
 			label3.TabIndex = 5;
 			label3.Text = "Result:";
 			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Location = new Point(101, 120);
+			label4.Name = "label4";
+			label4.Size = new Size(59, 20);
+			label4.TabIndex = 6;
+			label4.Text = "No way";
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(417, 159);
+			Controls.Add(label4);
 			Controls.Add(label3);
 			Controls.Add(button1);
 			Controls.Add(comboBox2);
@@ -115,5 +126,6 @@
 		private ComboBox comboBox2;
 		private Button button1;
 		private Label label3;
+		private Label label4;
 	}
 }
