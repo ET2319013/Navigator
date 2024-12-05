@@ -94,7 +94,7 @@ namespace Routes
 			return GetPath(previous, source, target, times[target]);
 		}
 
-		private string GetPath(int[] previous, int source, int target, double distance)
+		private string GetPath(int[] previous, int source, int target, double time)
 		{
 			List<string> paths = new List<string>();
 			//List<int> path = new List<int>();
@@ -105,7 +105,7 @@ namespace Routes
 			}
 			//path.Reverse();
 			if (paths.Count > 0 && paths[0] == Cities[source])
-				return String.Join("-", paths) + ", " + distance.ToString() + "hours";
+				return String.Join("-", paths) + ", " + time.ToString() + "hours";
 			else
 				return "No way found"; // Путь не найден.
 		}
