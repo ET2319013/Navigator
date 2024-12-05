@@ -105,7 +105,10 @@ namespace Routes
 			}
 			//path.Reverse();
 			if (paths.Count > 0 && paths[0] == Cities[source])
-				return String.Join("-", paths) + ", " + time.ToString() + "hours";
+			{
+				var t = TimeSpan.FromHours(time);
+				return String.Join("-", paths) + ", " + t.Hours.ToString() + ":" + t.Minutes.ToString() + ":" + t.Seconds.ToString();
+			}		
 			else
 				return "No way found"; // Путь не найден.
 		}
