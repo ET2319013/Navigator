@@ -51,18 +51,18 @@ namespace Routes
 
 		public string Dijkstra(int source, int target)
 		{
-			double[] distances = new double[vertices];
+			double[] times = new double[vertices];
 			bool[] visited = new bool[vertices];
 			int[] previous = new int[vertices];
 
 			for (int i = 0; i < vertices; i++)
 			{
-				distances[i] = int.MaxValue;
+				times[i] = int.MaxValue;
 				visited[i] = false;
 				previous[i] = -1;
 			}
 
-			distances[source] = 0;
+			times[source] = 0;
 			PriorityQueue<int, double> pq = new PriorityQueue<int, double>();
 			pq.Enqueue(source, 0);
 
@@ -82,16 +82,16 @@ namespace Routes
 					int v = neighbor.Item1;
 					double weight = neighbor.Item2.Time;
 
-					if (!visited[v] && distances[u] + weight < distances[v])
+					if (!visited[v] && times[u] + weight < times[v])
 					{
-						distances[v] = distances[u] + weight;
+						times[v] = times[u] + weight;
 						previous[v] = u;
-						pq.Enqueue(v, distances[v]);
+						pq.Enqueue(v, times[v]);
 					}
 				}
 			}
 
-			return GetPath(previous, source, target, distances[target]);
+			return GetPath(previous, source, target, times[target]);
 		}
 
 		private string GetPath(int[] previous, int source, int target, double distance)
@@ -105,7 +105,7 @@ namespace Routes
 			}
 			//path.Reverse();
 			if (paths.Count > 0 && paths[0] == Cities[source])
-				return String.Join("-", paths) + " " + distance.ToString() + "hours";
+				return String.Join("-", paths) + ", " + distance.ToString() + "hours";
 			else
 				return "No way found"; // Путь не найден.
 		}
