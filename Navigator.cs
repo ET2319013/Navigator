@@ -91,22 +91,21 @@ namespace Routes
 				}
 			}
 
-			return GetPath(previous, source, target);
+			return GetPath(previous, source, target, distances[target]);
 		}
 
-		private string GetPath(int[] previous, int source, int target)
+		private string GetPath(int[] previous, int source, int target, double distance)
 		{
-			string path = string.Empty;
+			List<string> paths = new List<string>();
 			//List<int> path = new List<int>();
 			for (int at = target; at != -1; at = previous[at])
 			{
-				path = Cities[at] + "-" + path;
+				paths.Insert(0, Cities[at]);
 				//path.Add(at);
 			}
 			//path.Reverse();
-
-			if (path[0] == source)
-				return path;
+			if (paths.Count > 0 && paths[0] == Cities[source])
+				return String.Join("-", paths) + " " + distance.ToString() + "km";
 			else
 				return "No way found"; // Путь не найден.
 		}
